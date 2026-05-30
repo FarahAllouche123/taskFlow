@@ -141,7 +141,7 @@ taskflow/
 ```bash
 cd backend
 npm install
-cp .env.example .env
+cp .env .env
 npm run dev
 ```
 
@@ -149,7 +149,7 @@ npm run dev
 ```bash
 cd frontend
 npm install
-cp .env.example .env
+cp .env .env
 npm start
 ```
 
