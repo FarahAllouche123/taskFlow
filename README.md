@@ -2,16 +2,16 @@
 
 A full-stack task management web application built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js). TaskFlow allows users to create, organize, and track their tasks with an intuitive and modern interface.
 
-![TaskFlow](https://img.shields.io/badge/Stack-MERN-green) ![Version](https://img.shields.io/badge/Version-1.0.0-blue) ![License](https://img.shields.io/badge/License-MIT-yellow)
-
 ---
+
+## 📸 Screenshots
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/eabc79fd-4a1a-48c4-9507-dfc11a9a2ef3" />
 <img width="1908" height="913" alt="image" src="https://github.com/user-attachments/assets/379f1ba0-c76e-402b-8728-52149b532a20" />
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/7868fdc0-e567-485e-9c91-bcefbb279a3f" />
 <img width="1911" height="910" alt="image" src="https://github.com/user-attachments/assets/954fcae1-95e0-48d0-bcd0-c26c1742237c" />
 
-
+---
 
 ## 🎯 Overview
 
@@ -22,7 +22,7 @@ TaskFlow solves the problem of disorganized daily work by providing a clean, eff
 ## ✨ Features
 
 ### 👤 User Features
-- ✅ Secure registration and login 
+- ✅ Secure registration and login
 - ✅ Create, edit, delete tasks
 - ✅ Set task title, description, deadline and priority (Low / Medium / High)
 - ✅ Quick status change (To Do / In Progress / Completed)
@@ -53,22 +53,21 @@ TaskFlow solves the problem of disorganized daily work by providing a clean, eff
 ### Backend
 | Technology |
 |------------|
-| Node.js | 
-| Express.js | 
-| MongoDB | 
+| Node.js |
+| Express.js |
+| MongoDB |
 | Mongoose |
 | bcryptjs |
-| jsonwebtoken | 9.0 | Authentication tokens |
-
+| jsonwebtoken |
 
 ### Frontend
-| Technology | 
+| Technology |
 |------------|
-| React.js | 
-| React Router DOM | 
+| React.js |
+| React Router DOM |
 | Axios |
-| React Hot Toast | 
-| CSS-in-JS | 
+| React Hot Toast |
+| CSS-in-JS |
 
 ---
 
@@ -101,7 +100,7 @@ taskflow/
 └── frontend/
     ├── public/
     │   ├── index.html
-    │   └── bg.jpg                 
+    │   └── bg.jpg
     └── src/
         ├── components/
         │   ├── auth/
@@ -134,4 +133,96 @@ taskflow/
         └── index.css
 ```
 
+---
 
+## 🚀 Getting Started
+
+### 1. Setup Backend
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+### 2. Setup Frontend
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm start
+```
+
+### 3. Start MongoDB
+```bash
+# Windows
+net start MongoDB
+
+# Mac/Linux
+brew services start mongodb-community
+```
+
+---
+
+## 🔐 Environment Variables
+
+### Backend `.env`
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/taskflow
+JWT_SECRET=your_secret_key_here
+JWT_EXPIRE=7d
+NODE_ENV=development
+CLIENT_URL=http://localhost:3000
+ADMIN_EMAIL=admin@taskflow.io
+```
+
+### Frontend `.env`
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_ADMIN_EMAIL=admin@taskflow.io
+```
+
+---
+
+## 📡 API Endpoints
+
+### Auth `/api/auth`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/register` | Register new user |
+| POST | `/login` | Login user |
+| GET | `/me` | Get current user |
+| PUT | `/me` | Update profile |
+| PUT | `/password` | Change password |
+
+### Tasks `/api/tasks`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Get all tasks |
+| POST | `/` | Create task |
+| PUT | `/:id` | Update task |
+| DELETE | `/:id` | Delete task |
+| DELETE | `/completed/all` | Clear completed |
+
+### Admin `/api/admin`
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/stats` | Global statistics |
+| GET | `/users` | Get all users |
+| GET | `/users/:id` | Get user + tasks |
+| DELETE | `/users/:id` | Delete user |
+
+---
+
+## 👤 Admin Access
+
+1. Register with the email defined in `ADMIN_EMAIL`
+2. Login — redirected automatically to `/admin`
+3. Navbar shows **ADMIN** badge and **🛡️ Admin** button
+
+---
+
+## 👩‍💻 Author
+
+**Farah** 
