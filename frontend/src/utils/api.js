@@ -1,0 +1,33 @@
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api",
+  headers: { "Content-Type": "application/json" },
+});
+
+// Attach JWT token to every request
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+// Handle 401 globally — redirect to login
+// Exception: /auth/password returns 401 for wrong password → show error, don't logout
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const url = error.config?.url || "";
+    const is401 = error.response?.status === 401;
+    const isPasswordRoute = url.includes("/auth/password");
+
+    if (is401 && !isPasswordRoute) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default api;
